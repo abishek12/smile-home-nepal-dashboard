@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+
+import { Phone, Lock } from "lucide-react";
+
 import { useLoginMutation } from "../../features/auth/authApiSlice";
 import { setCredentials } from "../../features/auth/authSlice";
 
@@ -72,45 +75,52 @@ const Login = () => {
                 {error}
               </div>
             )}
-
-            <div>
+            <div className="md:col-span-2">
               <label
                 htmlFor="phone_number"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-semibold text-neutral-700 mb-1.5"
               >
                 Phone Number
               </label>
-              <input
-                id="phone_number"
-                name="phone_number"
-                type="phone_number"
-                autoComplete="phone_number"
-                required
-                className="input"
-                placeholder="98-xxxx-xxxx"
-                value={formData.phone_number}
-                onChange={handleChange}
-              />
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none z-10">
+                  <Phone className="h-5 w-5 text-neutral-400 group-focus-within:text-primary-500 transition-colors" />
+                </div>
+                <input
+                  id="phone_number"
+                  name="phone_number"
+                  type="tel"
+                  required
+                  className="input pl-12 h-12 text-lg focus:ring-2 focus:ring-primary-500/20"
+                  placeholder="98-xxx-xx-xxx"
+                  value={formData.phone_number}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
 
-            <div>
+            <div className="md:col-span-2">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-semibold text-neutral-700 mb-1.5"
               >
                 Password
               </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="input"
-                placeholder="••••••••"
-                value={formData.password}
-                onChange={handleChange}
-              />
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none z-10">
+                  <Lock className="h-5 w-5 text-neutral-400 group-focus-within:text-primary-500 transition-colors" />
+                </div>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  className="input pl-12 h-12 text-lg focus:ring-2 focus:ring-primary-500/20"
+                  placeholder="Enter your password"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
 
             <div className="flex items-center justify-between">
