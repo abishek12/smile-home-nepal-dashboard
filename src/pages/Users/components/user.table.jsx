@@ -42,15 +42,10 @@ const UserTable = ({ data, isFetching, isSuccess, totalUsers }) => {
                   className="hover:bg-neutral-50/50 transition-colors group"
                 >
                   <td className="py-4 px-6">
-                    <div className="flex flex-col">
-                      <span className="font-semibold text-neutral-900">
-                        {element?.user_model?.first_name}{" "}
-                        {element?.user_model?.last_name}
-                      </span>
-                      <span className="text-xs text-neutral-400 md:hidden">
-                        {element?.user_model?.email}
-                      </span>
-                    </div>
+                    <span className="font-semibold text-neutral-900">
+                      {element?.profile?.first_name}{" "}
+                      {element?.profile?.last_name}
+                    </span>
                   </td>
                   <td className="py-4 px-6">
                     <span className="text-neutral-600 font-medium">
@@ -59,12 +54,12 @@ const UserTable = ({ data, isFetching, isSuccess, totalUsers }) => {
                   </td>
                   <td className="py-4 px-6 hidden md:table-cell">
                     <span className="text-neutral-500">
-                      {element?.user_model?.email}
+                      {element?.profile?.email ?? "N/A"}
                     </span>
                   </td>
                   <td className="py-4 px-6 text-right">
                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-50 text-primary-700 border border-primary-100">
-                      Member
+                      {element?.role.toUpperCase()}
                     </span>
                   </td>
                 </tr>

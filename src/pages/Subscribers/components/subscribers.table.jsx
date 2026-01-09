@@ -7,32 +7,44 @@ const SubscribersTable = ({
   totalSubscribers,
 }) => {
   if (isFetching) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="flex flex-col items-center justify-center py-20 bg-white rounded-xl border border-neutral-200 shadow-sm">
+        <div className="w-10 h-10 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin mb-4"></div>
+        <p className="text-neutral-500 font-medium">Loading subscribers...</p>
+      </div>
+    );
   }
   return (
-    <div className="card space-y-4">
-      {(!totalSubscribers || totalSubscribers.length === 0) && isSuccess ? (
-        <ItemNotFound title="Subscribers" />
-      ) : (
-        <table className="w-full table-auto text-sm text-center text-neutralGreyDark bg-white shadow">
-          <thead className="text-neutralGreyDark border">
-            <td className="py-4 px-4 text-left font-medium whitespace-nowrap">
-              Email
-            </td>
-            <td className="py-4 px-4 text-left font-medium whitespace-nowrap">
-              Status
-            </td>
-          </thead>
-          <tbody className="divide-y divide-gray-200">
-            {data?.map((element) => {
-              <tr className="py-4 px-4 whitespace-nowrap">
-                <td>{element?.email}</td>
-                <td>{element?.status}</td>
-              </tr>;
-            })}
-          </tbody>
-        </table>
-      )}
+    <div className="w-full bg-white rounded-xl shadow-sm border border-neutral-200 overflow-hidden">
+      <div className="w-full overflow-x-auto custom-scrollbar">
+        {(!totalSubscribers || totalSubscribers.length === 0) && isSuccess ? (
+          <ItemNotFound title="Subscribers" />
+        ) : (
+          <table className="w-full text-sm text-left border-collapse">
+            <thead>
+              <tr className="bg-neutral-50 border-b border-neutral-200">
+                <th className="py-4 px-6 font-semibold text-neutral-700 uppercase tracking-wider text-xs whitespace-nowrap">
+                  Email
+                </th>
+                <th className="py-4 px-6 font-semibold text-neutral-700 uppercase tracking-wider text-xs whitespace-nowrap">
+                  Status
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-neutral-100 bg-white">
+              {data?.map((element) => {
+                <tr
+                  key={element?.id}
+                  className="hover:bg-neutral-50/50 transition-colors group"
+                >
+                  <td className="py-4 px-6">{element?.email}</td>
+                  <td className="py-4 px-6">{element?.status}</td>
+                </tr>;
+              })}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 };
