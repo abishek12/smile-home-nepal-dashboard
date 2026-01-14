@@ -3,9 +3,9 @@ import { apiSlice } from "../api/apiSlice";
 export const serviceApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getServices: builder.query({
-      query: ({ category, search, page = 1, limit = 10 }) => ({
+      query: ({ search = "", page = 1, limit = 10, sortBy, sortOrder }) => ({
         url: "/services",
-        params: { category, search, page, limit },
+        params: { q: search, page, limit, sortBy, sortOrder },
       }),
       providesTags: ["Service"],
     }),
