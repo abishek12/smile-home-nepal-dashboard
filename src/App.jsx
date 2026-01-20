@@ -8,6 +8,7 @@ import ContactLayout from "./layouts/ContactLayout";
 import FAQLayout from "./layouts/FAQLayout";
 import ServiceLayout from "./layouts/ServiceLayout";
 import UserLayout from "./layouts/UserLayout";
+import BookingLayout from "./layouts/BookingLayout";
 import SubscribersLayout from "./layouts/SubscribersLayout";
 
 // Pages
@@ -23,6 +24,8 @@ import Service from "./pages/Services/Services";
 import CreateService from "./pages/Services/CreateService";
 
 import Subscribers from "./pages/Subscribers/Subscribers";
+
+import Booking from "./pages/Booking/Booking";
 
 // Components
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -69,6 +72,10 @@ function App() {
             <Route path="users" element={<UserLayout />}>
               <Route index element={<User />} />
               <Route path="create" element={<CreateUser />} />
+            </Route>
+
+            <Route path="booking" element={<BookingLayout />}>
+              <Route index element={<Booking />} />
             </Route>
 
             <Route path="subscribers" element={<SubscribersLayout />}>

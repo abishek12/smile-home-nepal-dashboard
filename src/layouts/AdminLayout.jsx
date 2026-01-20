@@ -44,6 +44,11 @@ const AdminLayout = () => {
       icon: <Briefcase className="h-5 w-5" />,
     },
     {
+      name: "Bookings",
+      href: "/booking",
+      icon: <Briefcase className="h-5 w-5" />,
+    },
+    {
       name: "Contact",
       href: "/contact",
       icon: <Mail className="h-5 w-5" />,
